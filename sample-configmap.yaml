@@ -1,0 +1,21 @@
+## Sample Configmap manifest to mirror in all namespaces ( both existing & new ones )
+#
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: game-config
+  namespace: testing
+  annotations:
+    reflector.v1.k8s.emberstack.com/reflection-allowed: "true"
+    reflector.v1.k8s.emberstack.com/reflection-allowed-namespaces: ""
+    reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true"
+data:
+  game.properties: |
+    enemies=aliens
+    lives=3
+    secret.code.lives=30
+  ui.properties: |
+    color.good=purple
+    color.bad=yellow
+    allow.textmode=true
+    how.nice.to.look=fairlyNice
